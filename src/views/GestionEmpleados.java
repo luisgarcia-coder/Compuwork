@@ -109,7 +109,13 @@ public class GestionEmpleados extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
+        tablaEmpleados.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tablaEmpleados);
+        if (tablaEmpleados.getColumnModel().getColumnCount() > 0) {
+            tablaEmpleados.getColumnModel().getColumn(0).setResizable(false);
+            tablaEmpleados.getColumnModel().getColumn(1).setResizable(false);
+            tablaEmpleados.getColumnModel().getColumn(2).setResizable(false);
+        }
 
         btnAgregarEmpleado.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         btnAgregarEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/agregar.png"))); // NOI18N
@@ -192,7 +198,10 @@ public class GestionEmpleados extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bntModificarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntModificarEmpleadoActionPerformed
-        // TODO add your handling code here:
+        PantallaPrincipal ventana = new PantallaPrincipal();
+        ModificarEmpleados empleados = new ModificarEmpleados(ventana,true,this.control);
+        empleados.setLocationRelativeTo(null);
+        empleados.setVisible(true);
     }//GEN-LAST:event_bntModificarEmpleadoActionPerformed
 
     private void bntBuscarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntBuscarEmpleadoActionPerformed
