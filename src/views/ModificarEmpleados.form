@@ -89,7 +89,6 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="bntVolverEmpleados1" min="-2" pref="118" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -117,7 +116,10 @@
                           </Group>
                           <Component id="jPanel3" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="btnActualizarEmpleados" alignment="1" min="-2" pref="136" max="-2" attributes="0"/>
+                      <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="bntVolverEmpleados1" alignment="1" max="32767" attributes="0"/>
+                          <Component id="btnActualizarEmpleados" alignment="1" pref="126" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace pref="24" max="32767" attributes="0"/>
               </Group>

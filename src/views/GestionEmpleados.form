@@ -91,14 +91,12 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="359" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="bntEliminarEmpleado" alignment="1" max="32767" attributes="0"/>
-                          <Component id="bntBuscarEmpleado" alignment="0" max="32767" attributes="0"/>
-                          <Component id="bntModificarEmpleado" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnAgregarEmpleado" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Component id="btnVolverProducto" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="bntEliminarEmpleado" alignment="1" max="32767" attributes="0"/>
+                      <Component id="bntBuscarEmpleado" alignment="0" max="32767" attributes="0"/>
+                      <Component id="bntModificarEmpleado" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnAgregarEmpleado" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnVolverProducto" min="-2" pref="107" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="17" max="32767" attributes="0"/>
               </Group>
@@ -108,11 +106,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="jScrollPane1" min="-2" pref="323" max="-2" attributes="0"/>
-                          <EmptySpace pref="14" max="32767" attributes="0"/>
-                      </Group>
+                  <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="btnAgregarEmpleado" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -121,11 +115,12 @@
                           <Component id="bntBuscarEmpleado" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="bntEliminarEmpleado" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
                           <Component id="btnVolverProducto" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="jScrollPane1" min="-2" pref="323" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace pref="14" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
