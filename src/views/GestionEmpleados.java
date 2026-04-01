@@ -5,6 +5,8 @@
 package views;
 
 import controllers.EmpleadoController;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import models.Empleado;
 
@@ -54,9 +56,9 @@ public class GestionEmpleados extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaEmpleados = new javax.swing.JTable();
         btnAgregarEmpleado = new javax.swing.JButton();
-        bntModificarProducto = new javax.swing.JButton();
-        bntBuscarProducto = new javax.swing.JButton();
-        bntEliminarProducto = new javax.swing.JButton();
+        bntModificarEmpleado = new javax.swing.JButton();
+        bntBuscarEmpleado = new javax.swing.JButton();
+        bntEliminarEmpleado = new javax.swing.JButton();
         btnVolverProducto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -110,19 +112,23 @@ public class GestionEmpleados extends javax.swing.JDialog {
         jScrollPane1.setViewportView(tablaEmpleados);
 
         btnAgregarEmpleado.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
+        btnAgregarEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/agregar.png"))); // NOI18N
         btnAgregarEmpleado.setText("Agregar");
         btnAgregarEmpleado.addActionListener(this::btnAgregarEmpleadoActionPerformed);
 
-        bntModificarProducto.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
-        bntModificarProducto.setText("Modificar");
-        bntModificarProducto.addActionListener(this::bntModificarProductoActionPerformed);
+        bntModificarEmpleado.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
+        bntModificarEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/modificar.png"))); // NOI18N
+        bntModificarEmpleado.setText("Modificar");
+        bntModificarEmpleado.addActionListener(this::bntModificarEmpleadoActionPerformed);
 
-        bntBuscarProducto.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
-        bntBuscarProducto.setText("Buscar");
-        bntBuscarProducto.addActionListener(this::bntBuscarProductoActionPerformed);
+        bntBuscarEmpleado.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
+        bntBuscarEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buscar.png"))); // NOI18N
+        bntBuscarEmpleado.setText("Buscar");
+        bntBuscarEmpleado.addActionListener(this::bntBuscarEmpleadoActionPerformed);
 
-        bntEliminarProducto.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
-        bntEliminarProducto.setText("Eliminar");
+        bntEliminarEmpleado.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
+        bntEliminarEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eliminar.png"))); // NOI18N
+        bntEliminarEmpleado.setText("Eliminar");
 
         btnVolverProducto.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         btnVolverProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/volver.png"))); // NOI18N
@@ -139,9 +145,9 @@ public class GestionEmpleados extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(bntEliminarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(bntBuscarProducto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(bntModificarProducto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
+                        .addComponent(bntEliminarEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bntBuscarEmpleado, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bntModificarEmpleado, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnAgregarEmpleado, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(btnVolverProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(17, Short.MAX_VALUE))
@@ -155,13 +161,13 @@ public class GestionEmpleados extends javax.swing.JDialog {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(14, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnAgregarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAgregarEmpleado)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(bntModificarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(bntBuscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bntModificarEmpleado)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(bntEliminarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bntBuscarEmpleado)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(bntEliminarEmpleado)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnVolverProducto)
                         .addGap(43, 43, 43))))
@@ -185,13 +191,16 @@ public class GestionEmpleados extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bntModificarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntModificarProductoActionPerformed
+    private void bntModificarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntModificarEmpleadoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_bntModificarProductoActionPerformed
+    }//GEN-LAST:event_bntModificarEmpleadoActionPerformed
 
-    private void bntBuscarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntBuscarProductoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bntBuscarProductoActionPerformed
+    private void bntBuscarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntBuscarEmpleadoActionPerformed
+        PantallaPrincipal ventana = new PantallaPrincipal();
+        BuscarEmpleados empleados = new BuscarEmpleados(ventana,true,this.control);
+        empleados.setLocationRelativeTo(null);
+        empleados.setVisible(true);
+    }//GEN-LAST:event_bntBuscarEmpleadoActionPerformed
     
     private void btnAgregarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEmpleadoActionPerformed
         PantallaPrincipal ventana = new PantallaPrincipal();
@@ -209,9 +218,9 @@ public class GestionEmpleados extends javax.swing.JDialog {
      */
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bntBuscarProducto;
-    private javax.swing.JButton bntEliminarProducto;
-    private javax.swing.JButton bntModificarProducto;
+    private javax.swing.JButton bntBuscarEmpleado;
+    private javax.swing.JButton bntEliminarEmpleado;
+    private javax.swing.JButton bntModificarEmpleado;
     private javax.swing.JButton btnAgregarEmpleado;
     private javax.swing.JButton btnVolverProducto;
     private javax.swing.JLabel jLabel1;

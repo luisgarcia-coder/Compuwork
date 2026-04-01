@@ -26,29 +26,12 @@ public class EmpleadoController {
     public LinkedList<Empleado> listarEmpleado(){
         return gestore.listarEmpleados();
     }
-}
-
-/*
-package controllers;
-
-import java.time.LocalDate;
-import java.util.Date;
-import java.util.LinkedList;
-import models.GestorProducto;
-import models.Producto;
-
-public class ProductoController {
-    private static GestorProducto gestorp = new GestorProducto();
     
-    public void guardarProducto(float precio, int peso, String nombre, LocalDate fecha){
-        System.out.println("Producto enviado al controlador");
-        Producto p = new Producto(precio,peso,nombre,fecha);
-        gestorp.agregarProducto(p);
-        System.out.println("Producto agregado correctamente");
+    public Empleado buscarID(int Id){
+        return gestore.buscarEmpleadoID(Id);
     }
     
-    public LinkedList<Producto> listarProductos(){
-        return gestorp.listarProductos();
+    public Empleado buscarNombre(String nombre){
+        return gestore.buscarEmpleado(nombre);
     }
 }
-*/

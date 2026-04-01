@@ -93,9 +93,9 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="bntEliminarProducto" alignment="1" max="32767" attributes="0"/>
-                          <Component id="bntBuscarProducto" alignment="0" max="32767" attributes="0"/>
-                          <Component id="bntModificarProducto" alignment="0" pref="86" max="32767" attributes="0"/>
+                          <Component id="bntEliminarEmpleado" alignment="1" max="32767" attributes="0"/>
+                          <Component id="bntBuscarEmpleado" alignment="0" max="32767" attributes="0"/>
+                          <Component id="bntModificarEmpleado" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnAgregarEmpleado" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <Component id="btnVolverProducto" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
@@ -109,18 +109,18 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <Component id="jScrollPane1" min="-2" pref="323" max="-2" attributes="0"/>
                           <EmptySpace pref="14" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="btnAgregarEmpleado" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="btnAgregarEmpleado" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="bntModificarProducto" min="-2" pref="28" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                          <Component id="bntBuscarProducto" min="-2" pref="28" max="-2" attributes="0"/>
+                          <Component id="bntModificarEmpleado" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="bntEliminarProducto" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="bntBuscarEmpleado" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="bntEliminarEmpleado" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="btnVolverProducto" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
@@ -180,38 +180,50 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Calibri" size="12" style="1"/>
             </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/agregar.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Agregar"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgregarEmpleadoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="bntModificarProducto">
+        <Component class="javax.swing.JButton" name="bntModificarEmpleado">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Calibri" size="12" style="1"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/modificar.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Modificar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bntModificarProductoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bntModificarEmpleadoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="bntBuscarProducto">
+        <Component class="javax.swing.JButton" name="bntBuscarEmpleado">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Calibri" size="12" style="1"/>
             </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/buscar.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Buscar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bntBuscarProductoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bntBuscarEmpleadoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="bntEliminarProducto">
+        <Component class="javax.swing.JButton" name="bntEliminarEmpleado">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Calibri" size="12" style="1"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/eliminar.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Eliminar"/>
           </Properties>
