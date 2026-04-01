@@ -135,6 +135,7 @@ public class GestionEmpleados extends javax.swing.JDialog {
         bntEliminarEmpleado.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         bntEliminarEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eliminar.png"))); // NOI18N
         bntEliminarEmpleado.setText("Eliminar");
+        bntEliminarEmpleado.addActionListener(this::bntEliminarEmpleadoActionPerformed);
 
         btnVolverProducto.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         btnVolverProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/volver.png"))); // NOI18N
@@ -199,6 +200,7 @@ public class GestionEmpleados extends javax.swing.JDialog {
         ModificarEmpleados empleados = new ModificarEmpleados(ventana,true,this.control);
         empleados.setLocationRelativeTo(null);
         empleados.setVisible(true);
+        cargarTabla();
     }//GEN-LAST:event_bntModificarEmpleadoActionPerformed
 
     private void bntBuscarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntBuscarEmpleadoActionPerformed
@@ -218,6 +220,25 @@ public class GestionEmpleados extends javax.swing.JDialog {
     private void btnVolverProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverProductoActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnVolverProductoActionPerformed
+
+    private void bntEliminarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntEliminarEmpleadoActionPerformed
+        int fila = tablaEmpleados.getSelectedRow();
+        if(fila==-1)
+            JOptionPane.showMessageDialog(this,"Seleccione un empleado de la tabla");
+        else{
+            String Emp=tablaEmpleados.getValueAt(fila,1).toString(); //Selecciona fila
+            int confirm = JOptionPane.showConfirmDialog(this,"Desea eliminar el empleado " + Emp + "?","Confirmar eliminación",JOptionPane.YES_NO_OPTION,JOptionPane.ERROR_MESSAGE);
+            if(confirm == JOptionPane.YES_OPTION){
+                boolean borrar = control.eliminarEmpleado(Emp);
+                if(borrar){
+                    JOptionPane.showMessageDialog(this,"Empleado eliminado");
+                    cargarTabla();
+                }else{
+                    JOptionPane.showMessageDialog(this,"Error: no se pudo eliminar el empleado");
+                }                
+            }
+        }
+    }//GEN-LAST:event_bntEliminarEmpleadoActionPerformed
 
     /**
      * @param args the command line arguments

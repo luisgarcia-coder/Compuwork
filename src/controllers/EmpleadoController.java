@@ -38,4 +38,8 @@ public class EmpleadoController {
     public boolean actualizarEmpleado(int id, Empleado empleado){
         return gestore.actualizarEmpleado(id, empleado);
     }
+    
+    public boolean eliminarEmpleado(String nombre){
+        return gestore.eliminarEmpleado(nombre);
+    }
 }
