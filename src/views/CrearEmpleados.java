@@ -6,6 +6,7 @@ package views;
 
 import controllers.EmpleadoController;
 import java.time.LocalDate;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -87,6 +88,7 @@ public class CrearEmpleados extends javax.swing.JDialog {
         bntVolverEmpleados.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         bntVolverEmpleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/volver.png"))); // NOI18N
         bntVolverEmpleados.setText("Volver");
+        bntVolverEmpleados.addActionListener(this::bntVolverEmpleadosActionPerformed);
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jLabel2.setText("Nombre:");
@@ -109,11 +111,6 @@ public class CrearEmpleados extends javax.swing.JDialog {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                             .addGap(39, 39, 39)
@@ -122,20 +119,20 @@ public class CrearEmpleados extends javax.swing.JDialog {
                             .addComponent(bntLimpiarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addGap(45, 45, 45)
-                                    .addComponent(jLabel2))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                    .addGap(34, 34, 34)
+                                    .addComponent(jLabel2)
+                                    .addGap(17, 17, 17))
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addGap(21, 21, 21)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtIdEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addGap(3, 3, 3)
-                                    .addComponent(txtNombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(3, 3, 3)))
+                                .addComponent(txtIdEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtNombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(130, 130, 130)
                         .addComponent(bntVolverEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -152,11 +149,11 @@ public class CrearEmpleados extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(txtFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardarEmpleado)
                     .addComponent(bntLimpiarEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -191,20 +188,44 @@ public class CrearEmpleados extends javax.swing.JDialog {
     }//GEN-LAST:event_bntLimpiarEmpleadoActionPerformed
 
     private void btnGuardarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarEmpleadoActionPerformed
-        int idEmpleado = Integer.parseInt(txtIdEmpleado.getText());
-        String nombre = txtNombreEmpleado.getText();
-        /*Acá busqué una función que me permita convertir la fecha con formato de minutos, segundos, etc a LocalDate
-        No pude poner el include de java.sql.Date porque no permite importar dos clases Date,
-        luego en la línea de código si puedo hacerlo sin conflicto*/
-        LocalDate fecha = new java.sql.Date(txtFechaIngreso.getDate().getTime()).toLocalDate();
+        try{
+            //Valida y caputa Id empleado, integer y no vacío
+            if (txtIdEmpleado.getText().isEmpty())
+                throw new Exception("El ID no puede estar vacío");
+            int idEmpleado = Integer.parseInt(txtIdEmpleado.getText());
+            
+            //Valida y caputa nombre no vacío
+            if (txtNombreEmpleado.getText().isEmpty())
+                throw new Exception("El nombre no puede estar vacío");
+            String nombre = txtNombreEmpleado.getText();
+            
+            //Valida y caputa fecha no vacía
+            if (txtFechaIngreso.getDate()==null)
+                throw new Exception("La fecha no puede estar vacía");
+            /*Acá busqué una función que me permita convertir la fecha con formato de minutos, segundos, etc a LocalDate
+            No pude poner el include de java.sql.Date porque no permite importar dos clases Date,
+            luego en la línea de código si puedo hacerlo sin conflicto*/
+            LocalDate fecha = new java.sql.Date(txtFechaIngreso.getDate().getTime()).toLocalDate();
         
-        EmpleadoController controlador = new EmpleadoController();
-        controlador.guardarEmpleado(idEmpleado, nombre, fecha);
-        System.out.println("Empleado enviado al controlador");
-        System.out.println("ID: " + idEmpleado);
-        System.out.println("Nombre: " + nombre);
-        System.out.println("Fecha ingreso: " + fecha);
+            EmpleadoController controlador = new EmpleadoController();
+            controlador.guardarEmpleado(idEmpleado, nombre, fecha);
+            JOptionPane.showMessageDialog(this, "Empleado registrado exitosamente");
+            txtIdEmpleado.setText("");
+            txtNombreEmpleado.setText("");
+            txtFechaIngreso.setDate(null);
+        } catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Error: El ID debe ser un número entero", "Error de Formato", JOptionPane.ERROR_MESSAGE);
+            txtIdEmpleado.requestFocus();
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Validación", JOptionPane.WARNING_MESSAGE);
+            txtIdEmpleado.requestFocus();
+        }        
+        //System.out.println("Empleado enviado al controlador");        
     }//GEN-LAST:event_btnGuardarEmpleadoActionPerformed
+
+    private void bntVolverEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntVolverEmpleadosActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_bntVolverEmpleadosActionPerformed
 
     /**
      * @param args the command line arguments
