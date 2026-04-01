@@ -267,13 +267,13 @@ public class BuscarEmpleados extends javax.swing.JDialog {
             }else{
                 JOptionPane.showMessageDialog(this, "Ingrese ID o nombre para buscar");
                 return;
-            }
-            
+            }            
             if(resultado!=null){
                 lblIdResultado.setText(String.valueOf(resultado.getIdEmpleado()));
                 lblNombreResultado.setText(resultado.getNombre());
-                java.text.SimpleDateFormat fecha = new java.text.SimpleDateFormat("dd/MM/yyyy");
-                lblfechaResultado.setText(fecha.format(resultado.getFechaingreso()));
+                java.time.format.DateTimeFormatter formato = java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                String fechaFormateada = resultado.getFechaingreso().format(formato);
+                lblfechaResultado.setText(fechaFormateada);
             }                
         }catch (NumberFormatException e){
             JOptionPane.showMessageDialog(this, "El ID debe ser numérico.");
