@@ -41,7 +41,7 @@ public class ModificarEmpleados extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         btnBuscarEmpleado = new javax.swing.JButton();
         bntLimpiarEmpleado = new javax.swing.JButton();
-        bntVolverEmpleados = new javax.swing.JButton();
+        btnActualizarEmpleados = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtIdEmpleado = new javax.swing.JTextField();
@@ -92,10 +92,10 @@ public class ModificarEmpleados extends javax.swing.JDialog {
         bntLimpiarEmpleado.setText("Limpiar");
         bntLimpiarEmpleado.addActionListener(this::bntLimpiarEmpleadoActionPerformed);
 
-        bntVolverEmpleados.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
-        bntVolverEmpleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/modificar.png"))); // NOI18N
-        bntVolverEmpleados.setText("Actualizar");
-        bntVolverEmpleados.addActionListener(this::bntVolverEmpleadosActionPerformed);
+        btnActualizarEmpleados.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
+        btnActualizarEmpleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/modificar.png"))); // NOI18N
+        btnActualizarEmpleados.setText("Actualizar");
+        btnActualizarEmpleados.addActionListener(this::btnActualizarEmpleadosActionPerformed);
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jLabel2.setText("Nombre:");
@@ -178,7 +178,6 @@ public class ModificarEmpleados extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(bntVolverEmpleados1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bntVolverEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,7 +197,8 @@ public class ModificarEmpleados extends javax.swing.JDialog {
                             .addComponent(btnBuscarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(bntLimpiarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnActualizarEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -219,7 +219,7 @@ public class ModificarEmpleados extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(bntVolverEmpleados)
+                .addComponent(btnActualizarEmpleados)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bntVolverEmpleados1)
                 .addContainerGap())
@@ -291,9 +291,30 @@ public class ModificarEmpleados extends javax.swing.JDialog {
     }
     }//GEN-LAST:event_btnBuscarEmpleadoActionPerformed
 
-    private void bntVolverEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntVolverEmpleadosActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_bntVolverEmpleadosActionPerformed
+    private void btnActualizarEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarEmpleadosActionPerformed
+        try {
+            if (txtIdEmpleadoNuevo.getText().isEmpty() || txtNombreEmpleadoNuevo.getText().isEmpty() || txtFechaIngresoNuevo.getDate() == null){
+                JOptionPane.showMessageDialog(this, "Debe buscar un empleado y completar los campos antes de actualizar.");
+                return;
+            }
+            int id = Integer.parseInt(txtIdEmpleadoNuevo.getText());
+            String nombre_nuevo = txtNombreEmpleadoNuevo.getText();
+            java.time.LocalDate fecha_nueva = new java.sql.Date(txtFechaIngresoNuevo.getDate().getTime()).toLocalDate();
+            
+            Empleado nuevoEmpleado = new Empleado(id, nombre_nuevo, fecha_nueva);
+
+            boolean exito = control.actualizarEmpleado(id, nuevoEmpleado);
+
+            if(exito){
+                JOptionPane.showMessageDialog(this, "Datos actualizados correctamente");
+                bntLimpiarEmpleadoActionPerformed(null);
+            }else{
+                JOptionPane.showMessageDialog(this, "Error al actualizar");
+            }
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(this, "Error al actualizar: " + e.getMessage());
+        }
+    }//GEN-LAST:event_btnActualizarEmpleadosActionPerformed
 
     private void bntVolverEmpleados1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntVolverEmpleados1ActionPerformed
         this.dispose();
@@ -305,8 +326,8 @@ public class ModificarEmpleados extends javax.swing.JDialog {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntLimpiarEmpleado;
-    private javax.swing.JButton bntVolverEmpleados;
     private javax.swing.JButton bntVolverEmpleados1;
+    private javax.swing.JButton btnActualizarEmpleados;
     private javax.swing.JButton btnBuscarEmpleado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

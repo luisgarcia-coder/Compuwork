@@ -34,4 +34,8 @@ public class EmpleadoController {
     public Empleado buscarNombre(String nombre){
         return gestore.buscarEmpleado(nombre);
     }
+    
+    public boolean actualizarEmpleado(int id, Empleado empleado){
+        return gestore.actualizarEmpleado(id, empleado);
+    }
 }
