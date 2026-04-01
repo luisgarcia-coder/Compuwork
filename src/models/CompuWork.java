@@ -6,6 +6,7 @@ package models;
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.Set;
+import views.PantallaPrincipal;
 /**
  *
  * @author ljgarciao
@@ -16,6 +17,8 @@ public class CompuWork {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        PantallaPrincipal pantalla=new PantallaPrincipal();
+        pantalla.setVisible(true);
         LinkedList<Empleado> empleados = new LinkedList<>();
                 
         //Creación departamentos

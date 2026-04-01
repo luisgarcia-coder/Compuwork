@@ -71,17 +71,17 @@ public class GestionEmpleados extends javax.swing.JDialog {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(80, 80, 80)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(116, 116, 116))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
+                .addContainerGap(26, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addGap(22, 22, 22))
         );
 
         jPanel2.setBackground(new java.awt.Color(188, 217, 121));
@@ -111,6 +111,7 @@ public class GestionEmpleados extends javax.swing.JDialog {
 
         btnAgregarEmpleado.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         btnAgregarEmpleado.setText("Agregar");
+        btnAgregarEmpleado.addActionListener(this::btnAgregarEmpleadoActionPerformed);
 
         bntModificarProducto.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         bntModificarProducto.setText("Modificar");
@@ -186,6 +187,13 @@ public class GestionEmpleados extends javax.swing.JDialog {
     private void bntBuscarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntBuscarProductoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bntBuscarProductoActionPerformed
+    
+    private void btnAgregarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEmpleadoActionPerformed
+        PantallaPrincipal ventana = new PantallaPrincipal();
+        CrearEmpleados empleados = new CrearEmpleados(ventana,true);
+        empleados.setVisible(true);
+        cargarTabla();
+    }//GEN-LAST:event_btnAgregarEmpleadoActionPerformed
 
     /**
      * @param args the command line arguments
