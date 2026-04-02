@@ -10,7 +10,7 @@ import models.Empleado;
 
 /**
  *
- * @author kobak
+ * @author ljgarciao
  */
 public class ModificarEmpleados extends javax.swing.JDialog {
     

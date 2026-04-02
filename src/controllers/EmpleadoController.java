@@ -11,16 +11,22 @@ import models.GestorEmpleado;
 
 /**
  *
- * @author kobak
+ * @author ljgarciao
  */
 public class EmpleadoController {
     private static GestorEmpleado gestore = new GestorEmpleado();
     
+    /*Método anterior para guardar empleado solo
     public void guardarEmpleado(int idEmpleado, String nombre, LocalDate fechaIngreso){
         System.out.println("Empleado enviado al controlador");
         Empleado p = new Empleado(idEmpleado, nombre, fechaIngreso);
         gestore.agregarEmpleado(p);
         System.out.println("Empleado agregado correctamente");
+    }*/
+    
+    //Método para guardar empleado considerando la herencia. Extends de permanente y temporal
+    public void guardarEmpleado(Empleado empleado){
+        gestore.agregarEmpleado(empleado);
     }
     
     public LinkedList<Empleado> listarEmpleado(){

@@ -8,7 +8,7 @@ import java.util.LinkedList;
 
 /**
  *
- * @author kobak
+ * @author ljgarciao
  */
 public class GestorEmpleado{
     private LinkedList<Empleado> listaEmpleados;

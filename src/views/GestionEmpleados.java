@@ -9,10 +9,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import models.Empleado;
+import models.EmpleadoPermanente;
+import models.EmpleadoTemporal;
 
 /**
  *
- * @author kobak
+ * @author ljgarciao
  */
 public class GestionEmpleados extends javax.swing.JDialog {
     
@@ -32,10 +34,23 @@ public class GestionEmpleados extends javax.swing.JDialog {
         modelo.setRowCount(0); //Limpiar tabla
         
         for(Empleado p:control.listarEmpleado()){
+            String tipo = "";
+            String infExtra = "";
+            if(p instanceof EmpleadoPermanente){ //En caso que tenga el extend de empleado permanente
+                tipo = "Permanente";
+                EmpleadoPermanente emp = (EmpleadoPermanente) p;
+                infExtra = "Bono: " + emp.getBonoAntiguedad() + ". Beneficios: " + emp.getBeneficios() + ".";
+            }else{
+                tipo = "Temporal";
+                EmpleadoTemporal emp = (EmpleadoTemporal) p;
+                infExtra = "Fin contrato: " + emp.getFechaContrato();
+            }
             Object[] fila={
                 p.getIdEmpleado(),
                 p.getNombre(),
-                p.getFechaingreso()
+                p.getFechaingreso(),
+                tipo,
+                infExtra
             };
             modelo.addRow(fila);
         }
@@ -94,29 +109,35 @@ public class GestionEmpleados extends javax.swing.JDialog {
         tablaEmpleados.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         tablaEmpleados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Id empleado", "Nombre", "Fecha ingreso"
+                "Id", "Nombre", "Fec ingreso", "Tipo empleado", "Información adicional"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        tablaEmpleados.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         tablaEmpleados.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tablaEmpleados);
         if (tablaEmpleados.getColumnModel().getColumnCount() > 0) {
             tablaEmpleados.getColumnModel().getColumn(0).setResizable(false);
+            tablaEmpleados.getColumnModel().getColumn(0).setPreferredWidth(50);
             tablaEmpleados.getColumnModel().getColumn(1).setResizable(false);
             tablaEmpleados.getColumnModel().getColumn(2).setResizable(false);
+            tablaEmpleados.getColumnModel().getColumn(2).setPreferredWidth(70);
+            tablaEmpleados.getColumnModel().getColumn(3).setResizable(false);
+            tablaEmpleados.getColumnModel().getColumn(3).setPreferredWidth(70);
+            tablaEmpleados.getColumnModel().getColumn(4).setPreferredWidth(200);
         }
 
         btnAgregarEmpleado.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N

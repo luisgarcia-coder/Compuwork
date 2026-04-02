@@ -7,10 +7,13 @@ package views;
 import controllers.EmpleadoController;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
+import models.Empleado;
+import models.EmpleadoPermanente;
+import models.EmpleadoTemporal;
 
 /**
  *
- * @author kobak
+ * @author ljgarciao
  */
 public class CrearEmpleados extends javax.swing.JDialog {
     
@@ -23,8 +26,6 @@ public class CrearEmpleados extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
     }
-
-    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,6 +48,14 @@ public class CrearEmpleados extends javax.swing.JDialog {
         txtIdEmpleado = new javax.swing.JTextField();
         txtNombreEmpleado = new javax.swing.JTextField();
         txtFechaIngreso = new com.toedter.calendar.JDateChooser();
+        cmbTipoEmpleado = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        txtBono = new javax.swing.JTextField();
+        txtBeneficios = new javax.swing.JTextField();
+        txtFechaContrato = new com.toedter.calendar.JDateChooser();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -104,13 +113,47 @@ public class CrearEmpleados extends javax.swing.JDialog {
         jLabel4.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 201, 148));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("Fecha ingreso:");
+        jLabel4.setText("Tipo empleado:");
 
         txtIdEmpleado.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
         txtNombreEmpleado.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
         txtFechaIngreso.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+
+        cmbTipoEmpleado.setFont(new java.awt.Font("Calibri", 2, 14)); // NOI18N
+        cmbTipoEmpleado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Permanente", "Temporal" }));
+        cmbTipoEmpleado.addItemListener(this::cmbTipoEmpleadoItemStateChanged);
+        cmbTipoEmpleado.addActionListener(this::cmbTipoEmpleadoActionPerformed);
+
+        jLabel5.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 201, 148));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel5.setText("Fecha ingreso:");
+
+        txtBono.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        txtBono.setEnabled(false);
+
+        txtBeneficios.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        txtBeneficios.setEnabled(false);
+
+        txtFechaContrato.setEnabled(false);
+        txtFechaContrato.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+
+        jLabel6.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 201, 148));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel6.setText("Bono:");
+
+        jLabel7.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 201, 148));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel7.setText("Fecha contrato:");
+
+        jLabel8.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 201, 148));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel8.setText("Beneficios:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -119,32 +162,51 @@ public class CrearEmpleados extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(btnGuardarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGap(32, 32, 32)
+                                    .addComponent(jLabel3))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                    .addGap(21, 21, 21)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(32, 32, 32)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)))
+                                .addGap(53, 53, 53)
+                                .addComponent(jLabel2))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap()
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtIdEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbTipoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtBono, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(106, 106, 106)
+                                .addComponent(btnGuardarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(bntLimpiarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtIdEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(118, 118, 118)
-                        .addComponent(bntVolverEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtFechaContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtBeneficios)))))
                 .addContainerGap(20, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(bntVolverEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(111, 111, 111))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,19 +217,35 @@ public class CrearEmpleados extends javax.swing.JDialog {
                     .addComponent(txtIdEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(txtNombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtFechaIngreso, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(12, 12, 12)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cmbTipoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
+                    .addComponent(txtBono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtBeneficios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtFechaContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardarEmpleado)
                     .addComponent(bntLimpiarEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(bntVolverEmpleados)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGap(16, 16, 16))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -182,17 +260,14 @@ public class CrearEmpleados extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bntLimpiarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntLimpiarEmpleadoActionPerformed
-        txtIdEmpleado.setText("");
-        txtNombreEmpleado.setText("");
-        txtFechaIngreso.setDate(null);
+        limpiarForm();
     }//GEN-LAST:event_bntLimpiarEmpleadoActionPerformed
 
     private void btnGuardarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarEmpleadoActionPerformed
@@ -215,14 +290,40 @@ public class CrearEmpleados extends javax.swing.JDialog {
             luego en la línea de código si puedo hacerlo sin conflicto*/
             LocalDate fecha = new java.sql.Date(txtFechaIngreso.getDate().getTime()).toLocalDate();
         
-            EmpleadoController controlador = new EmpleadoController();
-            controlador.guardarEmpleado(idEmpleado, nombre, fecha);
-            JOptionPane.showMessageDialog(this, "Empleado registrado exitosamente");
-            txtIdEmpleado.setText("");
-            txtNombreEmpleado.setText("");
-            txtFechaIngreso.setDate(null);
+            Empleado nuevoEmpleado;
+            try{
+                String tipo = cmbTipoEmpleado.getSelectedItem().toString();
+                if(tipo.equals("Seleccione")){
+                    throw new Exception("Seleccione tipo empleado");
+                }
+                if(tipo.equals("Permanente")){
+                    if(txtBono.getText().isEmpty()) throw new Exception("Ingrese bono");
+                    if(txtBeneficios.getText().isEmpty()) throw new Exception("Ingrese beneficios");
+                    double bono = Double.parseDouble(txtBono.getText());
+                    try{
+                        if(bono<0)
+                            throw new Exception("El bono debe ser positivo");
+                    } catch(NumberFormatException e){
+                        throw new Exception("El bono debe ser numérico");
+                    }                    
+                    String beneficios = txtBeneficios.getText();
+                    nuevoEmpleado = new EmpleadoPermanente(bono,beneficios,idEmpleado,nombre,fecha);
+                }else{
+                    if (txtFechaContrato.getDate() == null) throw new Exception("Debe ingresar la fecha de fin de contrato");
+                    LocalDate fechaContrato = new java.sql.Date(txtFechaContrato.getDate().getTime()).toLocalDate();
+                    nuevoEmpleado = new EmpleadoTemporal(fechaContrato, idEmpleado, nombre, fecha);
+                }
+                EmpleadoController controlador = new EmpleadoController();
+                //controlador.guardarEmpleado(idEmpleado, nombre, fecha); Antigua linea para guardar empleado
+                controlador.guardarEmpleado(nuevoEmpleado);
+                JOptionPane.showMessageDialog(this, "Empleado registrado exitosamente");
+                limpiarForm();
+            } catch(Exception e){
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.WARNING_MESSAGE);
+            }
+            
         } catch (NumberFormatException e){
-            JOptionPane.showMessageDialog(this, "Error: El ID debe ser un número entero", "Error de Formato", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Error: El ID (int) y bono (double) deben ser numéricos", "Error de Formato", JOptionPane.ERROR_MESSAGE);
             txtIdEmpleado.requestFocus();
         } catch (Exception e){
             JOptionPane.showMessageDialog(this, e.getMessage(), "Validación", JOptionPane.WARNING_MESSAGE);
@@ -235,6 +336,54 @@ public class CrearEmpleados extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_bntVolverEmpleadosActionPerformed
 
+    private void limpiarForm(){
+        txtIdEmpleado.setText("");
+        txtNombreEmpleado.setText("");
+        txtFechaIngreso.setDate(null);
+        txtBono.setText("");
+        txtBono.setEnabled(false);
+        txtBeneficios.setText("");
+        txtBeneficios.setEnabled(false);
+        txtFechaContrato.setDate(null);
+        txtFechaContrato.setEnabled(false);
+        
+        cmbTipoEmpleado.setSelectedItem(0);
+        cmbTipoEmpleado.setFont(new java.awt.Font("Calibri", java.awt.Font.ITALIC, 14));
+        cmbTipoEmpleado.setSelectedItem("Seleccione");
+    }
+    
+    private void cmbTipoEmpleadoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbTipoEmpleadoItemStateChanged
+        String tipo = cmbTipoEmpleado.getSelectedItem().toString();
+        
+        if(tipo.equals("Seleccione")){
+            cmbTipoEmpleado.setFont(new java.awt.Font("Calibri",java.awt.Font.ITALIC,14));
+            txtBono.setText("");
+            txtBeneficios.setText("");
+            txtFechaContrato.setDate(null);
+            txtBono.setEnabled(false);
+            txtBeneficios.setEnabled(false);
+            txtFechaContrato.setEnabled(false);
+        }else{
+            cmbTipoEmpleado.setFont(new java.awt.Font("Calibri",java.awt.Font.PLAIN,14));
+            if(tipo.equals("Permanente")){
+                txtBono.setEnabled(true);
+                txtBeneficios.setEnabled(true);
+                txtFechaContrato.setEnabled(false);            
+            }else{
+                txtBono.setEnabled(false);
+                txtBeneficios.setEnabled(false);
+                txtFechaContrato.setEnabled(true);            
+            }
+        }
+        txtBono.setText("");
+        txtBeneficios.setText("");
+        txtFechaContrato.setDate(null);
+    }//GEN-LAST:event_cmbTipoEmpleadoItemStateChanged
+
+    private void cmbTipoEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoEmpleadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbTipoEmpleadoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -243,12 +392,20 @@ public class CrearEmpleados extends javax.swing.JDialog {
     private javax.swing.JButton bntLimpiarEmpleado;
     private javax.swing.JButton bntVolverEmpleados;
     private javax.swing.JButton btnGuardarEmpleado;
+    private javax.swing.JComboBox<String> cmbTipoEmpleado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField txtBeneficios;
+    private javax.swing.JTextField txtBono;
+    private com.toedter.calendar.JDateChooser txtFechaContrato;
     private com.toedter.calendar.JDateChooser txtFechaIngreso;
     private javax.swing.JTextField txtIdEmpleado;
     private javax.swing.JTextField txtNombreEmpleado;

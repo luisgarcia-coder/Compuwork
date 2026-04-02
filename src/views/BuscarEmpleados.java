@@ -10,7 +10,7 @@ import models.Empleado;
 
 /**
  *
- * @author kobak
+ * @author ljgarciao
  */
 public class BuscarEmpleados extends javax.swing.JDialog {
     
