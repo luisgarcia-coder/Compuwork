@@ -5,8 +5,11 @@
 package views;
 
 import controllers.EmpleadoController;
+import java.util.HashSet;
 import javax.swing.JOptionPane;
 import models.Empleado;
+import models.EmpleadoPermanente;
+import models.EmpleadoTemporal;
 
 /**
  *
@@ -52,6 +55,14 @@ public class ModificarEmpleados extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
         txtNombreEmpleadoNuevo = new javax.swing.JTextField();
         txtIdEmpleadoNuevo = new javax.swing.JTextField();
+        txtFechaContratoNuevo = new com.toedter.calendar.JDateChooser();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        cmbTipoEmpleadoNuevo = new javax.swing.JComboBox<>();
+        txtBeneficiosNuevo = new javax.swing.JTextField();
+        txtBonoNuevo = new javax.swing.JTextField();
         txtFechaIngresoNuevo = new com.toedter.calendar.JDateChooser();
         bntVolverEmpleados1 = new javax.swing.JButton();
 
@@ -137,6 +148,43 @@ public class ModificarEmpleados extends javax.swing.JDialog {
         txtIdEmpleadoNuevo.setText("-");
         txtIdEmpleadoNuevo.setEnabled(false);
 
+        txtFechaContratoNuevo.setEnabled(false);
+        txtFechaContratoNuevo.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+
+        jLabel7.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 201, 148));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel7.setText("Bono:");
+
+        jLabel8.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 201, 148));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel8.setText("Beneficios:");
+
+        jLabel9.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 201, 148));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel9.setText("Fecha contrato:");
+
+        jLabel10.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 201, 148));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel10.setText("Tipo empleado:");
+
+        cmbTipoEmpleadoNuevo.setFont(new java.awt.Font("Calibri", 2, 14)); // NOI18N
+        cmbTipoEmpleadoNuevo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Permanente", "Temporal" }));
+        cmbTipoEmpleadoNuevo.setEnabled(false);
+        cmbTipoEmpleadoNuevo.addItemListener(this::cmbTipoEmpleadoNuevoItemStateChanged);
+        cmbTipoEmpleadoNuevo.addActionListener(this::cmbTipoEmpleadoNuevoActionPerformed);
+
+        txtBeneficiosNuevo.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        txtBeneficiosNuevo.setText("-");
+        txtBeneficiosNuevo.setEnabled(false);
+
+        txtBonoNuevo.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        txtBonoNuevo.setText("-");
+        txtBonoNuevo.setEnabled(false);
+
         txtFechaIngresoNuevo.setEnabled(false);
         txtFechaIngresoNuevo.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
 
@@ -144,39 +192,70 @@ public class ModificarEmpleados extends javax.swing.JDialog {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel6)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel6))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGap(52, 52, 52)
                             .addComponent(jLabel5)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtBeneficiosNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNombreEmpleadoNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFechaIngresoNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtIdEmpleadoNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFechaContratoNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtIdEmpleadoNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbTipoEmpleadoNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBonoNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFechaIngresoNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(13, 13, 13)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtIdEmpleadoNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtIdEmpleadoNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
                 .addGap(14, 14, 14)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtNombreEmpleadoNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGap(12, 12, 12)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(txtFechaIngresoNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(12, 12, 12)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cmbTipoEmpleadoNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtBonoNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtBeneficiosNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9)
+                    .addComponent(txtFechaContratoNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         bntVolverEmpleados1.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
@@ -210,7 +289,7 @@ public class ModificarEmpleados extends javax.swing.JDialog {
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txtNombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txtIdEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -231,9 +310,9 @@ public class ModificarEmpleados extends javax.swing.JDialog {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnActualizarEmpleados)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(bntVolverEmpleados1)
-                .addGap(26, 26, 26))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -259,20 +338,31 @@ public class ModificarEmpleados extends javax.swing.JDialog {
         txtIdEmpleado.setText("");
         txtNombreEmpleado.setText("");
 
-        txtIdEmpleadoNuevo.setText("");
-        txtNombreEmpleadoNuevo.setText("");
+        txtIdEmpleadoNuevo.setText("-");
+        txtNombreEmpleadoNuevo.setText("-");
         txtFechaIngresoNuevo.setDate(null);
+        cmbTipoEmpleadoNuevo.setSelectedItem("Seleccione");
+        txtBonoNuevo.setText("-");
+        txtBeneficiosNuevo.setText("-");
+        txtFechaContratoNuevo.setDate(null);
         
         //Inhabilitar campos de edición
         txtIdEmpleadoNuevo.setEnabled(false);
         txtNombreEmpleadoNuevo.setEnabled(false);
         txtFechaIngresoNuevo.setEnabled(false);
+        txtBonoNuevo.setEnabled(false);
+        txtBeneficiosNuevo.setEnabled(false);
+        txtFechaContratoNuevo.setEnabled(false);
     }//GEN-LAST:event_bntLimpiarEmpleadoActionPerformed
 
     private void btnBuscarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarEmpleadoActionPerformed
         txtIdEmpleadoNuevo.setText("-");
         txtNombreEmpleadoNuevo.setText("-");
+        txtFechaContratoNuevo.setDate(null);
+        txtBonoNuevo.setText("-");
+        txtBeneficiosNuevo.setText("-");
         txtFechaIngresoNuevo.setDate(null);
+        
         try{
             Empleado resultado = null;
             if(!txtIdEmpleado.getText().isEmpty()){ //Buscamos primero si no está vacío ID
@@ -292,19 +382,85 @@ public class ModificarEmpleados extends javax.swing.JDialog {
                 txtFechaIngresoNuevo.setDate(fecha);
                 txtNombreEmpleadoNuevo.setEnabled(true);
                 txtFechaIngresoNuevo.setEnabled(true);
+                if(resultado instanceof EmpleadoPermanente){
+                    EmpleadoPermanente perm = (EmpleadoPermanente) resultado;
+                    cmbTipoEmpleadoNuevo.setSelectedItem("Permanente");
+                    txtBonoNuevo.setText(String.valueOf(perm.getBonoAntiguedad()));
+                    txtBeneficiosNuevo.setText(perm.getBeneficios());
+                    txtBonoNuevo.setEnabled(true);
+                    txtBeneficiosNuevo.setEnabled(true);
+                    txtFechaContratoNuevo.setEnabled(false); // Bloqueado para permanentes
+                }else if(resultado instanceof EmpleadoTemporal){
+                    EmpleadoTemporal temp = (EmpleadoTemporal) resultado;
+                    cmbTipoEmpleadoNuevo.setSelectedItem("Temporal");
+                    java.util.Date fContrato = java.sql.Date.valueOf(temp.getFechaContrato());
+                    txtFechaContratoNuevo.setDate(fContrato);
+                    txtBonoNuevo.setEnabled(false); // Bloqueado para temporales
+                    txtBeneficiosNuevo.setEnabled(false); // Bloqueado para temporales
+                    txtFechaContratoNuevo.setEnabled(true);
+                }
             }
             else
                 JOptionPane.showMessageDialog(this, "Empleado no encontrado");
         }catch (NumberFormatException e){
             JOptionPane.showMessageDialog(this, "El ID debe ser numérico.");
         }catch (Exception e){
-        JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
-    }
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+        }
     }//GEN-LAST:event_btnBuscarEmpleadoActionPerformed
 
     private void btnActualizarEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarEmpleadosActionPerformed
-        try {
-            if (txtIdEmpleadoNuevo.getText().isEmpty() || txtNombreEmpleadoNuevo.getText().isEmpty() || txtFechaIngresoNuevo.getDate() == null){
+        try{
+            if(txtIdEmpleadoNuevo.getText().equals("-") || txtIdEmpleadoNuevo.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this,"Debe buscar un empleado existente");
+            }
+            else{
+                int id = Integer.parseInt(txtIdEmpleadoNuevo.getText());
+                String nombre_nuevo = txtNombreEmpleadoNuevo.getText();
+                java.time.LocalDate fecha_nueva = new java.sql.Date(txtFechaIngresoNuevo.getDate().getTime()).toLocalDate();
+                Empleado emp = control.buscarID(id);
+                if(txtNombreEmpleadoNuevo.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(this,"Debe ingresar un nombre de empleado");
+                    return;
+                }
+                if (txtFechaIngresoNuevo.getDate() == null) {
+                   JOptionPane.showMessageDialog(this,"Debe ingresar fecha de ingreso");
+                    return;
+                }
+                emp.setNombre(nombre_nuevo);
+                emp.setFechaingreso(fecha_nueva);
+
+                if(emp instanceof EmpleadoPermanente){
+                    EmpleadoPermanente emp_p = (EmpleadoPermanente) emp;
+                    if(txtBonoNuevo.getText().isEmpty()){
+                        JOptionPane.showMessageDialog(this,"Debe ingresar un bono válido");
+                        return;
+                    }
+                    if(txtBeneficiosNuevo.getText().isEmpty()){
+                        JOptionPane.showMessageDialog(this,"Debe ingresar un beneficio válido");
+                        return;
+                    }
+                    emp_p.setBonoAntiguedad(Double.parseDouble(txtBonoNuevo.getText()));
+                    emp_p.setBeneficios(txtBeneficiosNuevo.getText());
+                }else{
+                    EmpleadoTemporal emp_t = (EmpleadoTemporal) emp;
+                    if (txtFechaContratoNuevo.getDate() == null) {
+                        JOptionPane.showMessageDialog(this,"Debe ingresar fecha de fin de contrato");
+                        return;
+                    }
+                    java.time.LocalDate fecha_fin_nueva = new java.sql.Date(txtFechaContratoNuevo.getDate().getTime()).toLocalDate();
+                    emp_t.setFechaContrato(fecha_fin_nueva);
+                }
+                bntLimpiarEmpleadoActionPerformed(null);
+            }
+        } catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(this,"El bono debe ser un valor numérico");
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(this,"Error: " + e.getMessage());
+        }
+        
+        /*try {
+            if (txtIdEmpleadoNuevo.getText().isEmpty() || txtNombreEmpleadoNuevo.getText().isEmpty() || txtFechaContratoNuevo.getDate() == null){
                 JOptionPane.showMessageDialog(this, "Debe buscar un empleado y completar los campos antes de actualizar.");
                 return;
             }
@@ -324,12 +480,20 @@ public class ModificarEmpleados extends javax.swing.JDialog {
             }
         } catch (Exception e){
             JOptionPane.showMessageDialog(this, "Error al actualizar: " + e.getMessage());
-        }
+        }*/
     }//GEN-LAST:event_btnActualizarEmpleadosActionPerformed
 
     private void bntVolverEmpleados1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntVolverEmpleados1ActionPerformed
         this.dispose();
     }//GEN-LAST:event_bntVolverEmpleados1ActionPerformed
+
+    private void cmbTipoEmpleadoNuevoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbTipoEmpleadoNuevoItemStateChanged
+    
+    }//GEN-LAST:event_cmbTipoEmpleadoNuevoItemStateChanged
+
+    private void cmbTipoEmpleadoNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoEmpleadoNuevoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbTipoEmpleadoNuevoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -340,15 +504,23 @@ public class ModificarEmpleados extends javax.swing.JDialog {
     private javax.swing.JButton bntVolverEmpleados1;
     private javax.swing.JButton btnActualizarEmpleados;
     private javax.swing.JButton btnBuscarEmpleado;
+    private javax.swing.JComboBox<String> cmbTipoEmpleadoNuevo;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JTextField txtBeneficiosNuevo;
+    private javax.swing.JTextField txtBonoNuevo;
+    private com.toedter.calendar.JDateChooser txtFechaContratoNuevo;
     private com.toedter.calendar.JDateChooser txtFechaIngresoNuevo;
     private javax.swing.JTextField txtIdEmpleado;
     private javax.swing.JTextField txtIdEmpleadoNuevo;
