@@ -63,9 +63,10 @@ public class GestionEmpleados extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(195, 223, 224));
+        jPanel1.setBackground(new java.awt.Color(33, 28, 51));
 
         jLabel1.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Gestión de empleados");
 
@@ -73,23 +74,24 @@ public class GestionEmpleados extends javax.swing.JDialog {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(136, 136, 136)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(161, 161, 161))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
+                .addContainerGap(25, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                .addGap(23, 23, 23))
         );
 
-        jPanel2.setBackground(new java.awt.Color(188, 217, 121));
+        jPanel2.setBackground(new java.awt.Color(43, 129, 140));
 
         jScrollPane1.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
 
+        tablaEmpleados.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         tablaEmpleados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -117,27 +119,27 @@ public class GestionEmpleados extends javax.swing.JDialog {
             tablaEmpleados.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        btnAgregarEmpleado.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
+        btnAgregarEmpleado.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         btnAgregarEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/agregar.png"))); // NOI18N
         btnAgregarEmpleado.setText("Agregar");
         btnAgregarEmpleado.addActionListener(this::btnAgregarEmpleadoActionPerformed);
 
-        bntModificarEmpleado.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
+        bntModificarEmpleado.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         bntModificarEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/modificar.png"))); // NOI18N
         bntModificarEmpleado.setText("Modificar");
         bntModificarEmpleado.addActionListener(this::bntModificarEmpleadoActionPerformed);
 
-        bntBuscarEmpleado.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
+        bntBuscarEmpleado.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         bntBuscarEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buscar.png"))); // NOI18N
         bntBuscarEmpleado.setText("Buscar");
         bntBuscarEmpleado.addActionListener(this::bntBuscarEmpleadoActionPerformed);
 
-        bntEliminarEmpleado.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
+        bntEliminarEmpleado.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         bntEliminarEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eliminar.png"))); // NOI18N
         bntEliminarEmpleado.setText("Eliminar");
         bntEliminarEmpleado.addActionListener(this::bntEliminarEmpleadoActionPerformed);
 
-        btnVolverProducto.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
+        btnVolverProducto.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         btnVolverProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/volver.png"))); // NOI18N
         btnVolverProducto.setText("Volver");
         btnVolverProducto.addActionListener(this::btnVolverProductoActionPerformed);
@@ -147,22 +149,22 @@ public class GestionEmpleados extends javax.swing.JDialog {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(20, 20, 20)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(43, 43, 43)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(bntEliminarEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bntBuscarEmpleado, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bntModificarEmpleado, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAgregarEmpleado, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAgregarEmpleado, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnVolverProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(19, 19, 19)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btnAgregarEmpleado)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -174,7 +176,7 @@ public class GestionEmpleados extends javax.swing.JDialog {
                         .addGap(92, 92, 92)
                         .addComponent(btnVolverProducto))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -182,7 +184,7 @@ public class GestionEmpleados extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
