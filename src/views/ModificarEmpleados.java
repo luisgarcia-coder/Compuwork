@@ -416,8 +416,7 @@ public class ModificarEmpleados extends javax.swing.JDialog {
             }
             else{
                 int id = Integer.parseInt(txtIdEmpleadoNuevo.getText());
-                String nombre_nuevo = txtNombreEmpleadoNuevo.getText();
-                java.time.LocalDate fecha_nueva = new java.sql.Date(txtFechaIngresoNuevo.getDate().getTime()).toLocalDate();
+                String nombre_nuevo = txtNombreEmpleadoNuevo.getText();                
                 Empleado emp = control.buscarID(id);
                 if(txtNombreEmpleadoNuevo.getText().isEmpty()){
                     JOptionPane.showMessageDialog(this,"Debe ingresar un nombre de empleado");
@@ -428,6 +427,7 @@ public class ModificarEmpleados extends javax.swing.JDialog {
                     return;
                 }
                 emp.setNombre(nombre_nuevo);
+                java.time.LocalDate fecha_nueva = new java.sql.Date(txtFechaIngresoNuevo.getDate().getTime()).toLocalDate();
                 emp.setFechaingreso(fecha_nueva);
 
                 if(emp instanceof EmpleadoPermanente){
